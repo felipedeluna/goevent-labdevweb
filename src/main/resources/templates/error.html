@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br" th:replace="fragments/layout :: layout(~{::title}, ~{::#content})"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GoEvent | Home</title>
+</head>
+<body>
+
+<main id="content">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="bg-warning">
+        <div class="container">
+            <ul class="nav nav-pills nav-fill mb-3 ">
+                <li class="nav-item">
+                    <a href="categorias/sertanejo.html" type="button" class="btn btn-warning w-75"><b>Sertanejo</b></a>
+                </li>
+                <li class="nav-item">
+                    <a href="categorias/mpb.html" type="button" class="btn btn-warning w-75"><b>Mpb</b></a>
+                </li>
+                <li class="nav-item">
+                    <a href="categorias/rock.html" type="button" class="btn btn-warning w-75"><b>Rock</b></a>
+                </li>
+                <li class="nav-item">
+                    <a href="categorias/samba.html" type="button" class="btn btn-warning w-75"><b>Samba</b></a>
+                </li>
+                <li class="nav-item">
+                    <a href="categorias/internacional.html" type="button" class="btn btn-warning w-75"><b>Internacional</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container" >
+
+        <div id="carouselExampleInterval" class="carousel slide mb-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-1.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-2.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-3.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-4.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-5.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-6.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-7.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-8.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-9.webp" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="../../assets/imgs/banners/b-10.webp" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <p th:value="evento" ></p>
+        <section id="eventos">
+            <div class="row">
+                <div th:each="evento : ${eventos}" class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img class="img-fluid rounded-start" th:src="'../../assets/imgs/flyers/f-' + ${evento.id} + '.webp'">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${evento.nome}"></h5>
+                                    <p class="card-text">
+                                        <span th:text="${#temporals.format(evento?.data, 'dd/MM/yyyy')}"></span>
+                                        <span> - Abertura: </span>
+                                        <span th:text="${evento.hora}"></span>
+                                    </p>
+                                    <p class="card-text"><small class="text-body-secondary"><b th:text="${evento.nomeLugar}"></b></small></p>
+                                    <a href="/#" type="button" class="btn btn-outline-warning">Comprar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+</main>
+</body>
