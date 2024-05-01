@@ -26,14 +26,13 @@ public class SecurityConfig {
                 .requestMatchers(PUBLIC_ROUTES)
                 .permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/prestador/**").hasRole("PRESTADOR")
                 .requestMatchers("/cliente/**").hasRole("CLIENTE")
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/auth/login")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/home");
         return http.build();
     }
 }
