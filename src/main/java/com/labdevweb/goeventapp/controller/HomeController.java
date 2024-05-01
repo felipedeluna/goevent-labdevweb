@@ -24,6 +24,14 @@ public class HomeController {
         return mv;
     }
 
+    @GetMapping(value = "/home/autenticado")
+    public ModelAndView home2(){
+        ModelAndView mv = new ModelAndView("error");
+        List<Evento> eventos = eventoService.findAll();
+        mv.addObject("eventos", eventos);
+        return mv;
+    }
+
     @GetMapping(value = "/politicaTermos")
     public String politicatermos(){
         return "politicaTermos";
