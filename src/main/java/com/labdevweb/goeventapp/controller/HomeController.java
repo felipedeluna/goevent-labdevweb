@@ -41,5 +41,12 @@ public class HomeController {
     public String perguntasfrequentes(){
         return "perguntasFrequentes";
     }
-}
 
+    @GetMapping("/eventos")
+    public ModelAndView evento(@RequestParam(required = false) String categoria) {
+        ModelAndView mv = new ModelAndView("eventos");
+        List<Evento> eventos = eventoService.buscarEventosPorCategoria(categoria);
+        mv.addObject("eventos", eventos);
+        return mv;
+    }
+}
